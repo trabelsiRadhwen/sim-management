@@ -1,0 +1,28 @@
+sims:
+    type:     rest
+    prefix: /api
+    resource: '@ApiBundle/Controller/SimController.php'
+
+agent_com:
+    type:     rest
+    prefix: /api
+    resource: '@ApiBundle/Controller/AgentComController.php'
+
+agent_report:
+    type:     rest
+    prefix: /api
+    resource: '@ApiBundle/Controller/AgentReportController.php'
+
+offres:
+    type:     rest
+    prefix: /api
+    resource: '@ApiBundle/Controller/OffreController.php'
+
+sim:
+    resource: "@SimBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
