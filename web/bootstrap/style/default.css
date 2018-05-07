@@ -1,7 +1,7 @@
 html, body{
     font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background-color: #f3f3f4;
-    color: #676a6c;
+    background-color: #F5F5F5;
+    color: #37474F;
     height: 100%;
 }
 
@@ -10,18 +10,10 @@ html, body{
 }
 
 #side-menu{
-    background-color: #37474F;
+    background-color: #FFFFFF;
     padding:0px;
     border-right: 1px;
     width: 20%;
-}
-
-#side-menu h1{
-    color: white;
-    font-family: "Times New Roman";
-    text-align: center;
-    margin: 10px 0px;
-    font-size: 25px;
 }
 
 #side-menu ul{
@@ -33,7 +25,7 @@ html, body{
 #side-menu a{
     padding: 12px 20px;
     text-decoration: none;
-    color: #9fb1c2;
+    color: #2aabd2;
     font-size: 15px ;
     font-weight: bold;
     display: block;
@@ -44,14 +36,14 @@ html, body{
 }
 
 #side-menu a:hover{
-    background-color: #293846;
-    color: #fff;
+    background-color: #E3F2FD;
+    color: #42A5F5;
     display: block;
 }
 
 #side-menu .active a{
-    color: #fff;
-    background-color: #293846;
+    color: #42A5F5;
+    background-color:#E3F2FD;
 }
 
 #side-menu .collapseable li{
@@ -60,8 +52,8 @@ html, body{
 }
 
 #side-menu .collapseable a{
-    color: #9fb1c2;
-    font-size: 12px;
+    color: #2979FF;
+    font-size: 13px;
     padding: 0px 10px;
     text-decoration: none;
     display: block;
@@ -72,8 +64,8 @@ html, body{
 }
 
 #side-menu .collapseable{
-    border-left: 4px solid #1ab394;
-    background-color: #293846;
+    border-left: 4px solid #2979FF;
+    background-color: #E3F2FD;
 }
 
 #side-menu .link > ul > li{
@@ -103,15 +95,15 @@ html, body{
 }
 
 #nav-header{
-    background-color: white;
-    border-bottom: 1px solid;
+    background: linear-gradient(to right , #039BE5 , #4FC3F7);
+    height: 70px;
 }
 
 #nav-header ul{
     margin: 0px;
     padding: 0px;
     list-style: none;
-    color: #676a6c;
+    color: #FFFFFF;
 }
 
 #nav-header ul li{
@@ -151,11 +143,11 @@ html, body{
 }
 
 .navbar-default{
-    background-color: #fff;
+    background-color: #039BE5;
 }
 .navbar-default .navbar-toggle{
-    border-color: #1ab394;
-    background-color: #1ab394;
+    border-color: #FFFFFF;
+    background-color: #039BE5;
 }
 
 .navbar-default .icon-bar{
@@ -163,11 +155,11 @@ html, body{
 }
 
 .navbar-default .navbar-toggle:hover{
-    background-color: #1ab394;
+    background-color: #039BE5;
 }
 
 .navbar-default .navbar-toggle:focus{
-    background-color: #1ab394;
+    background-color: #039BE5;
 }
 
 #content{
@@ -193,12 +185,15 @@ html, body{
 }
 
 .panel-default{
-    margin-top: 10px;
+    margin-top: 20px;
+}
+
+.panel-body{
+    margin-top: 20px;
 }
 
 #main-color-bg{
-    background-color: #37474F;
-    color: #ffff;
+    color: #2aabd2;
 }
 
 .dash-box{
@@ -226,4 +221,29 @@ html, body{
 .form-wrapper{
     background-color: #eee;
     padding: 20px;
+}
+
+#dash-offre{
+    background-color: #F44336;
+    color: #FFFFFF;
+}
+
+#dash-sim{
+    background-color: #FF5722;
+    color: #FFFFFF;
+}
+
+#dash-agent{
+    background-color: #0277BD;
+    color: #FFFFFF;
+}
+
+#dash-marque{
+    background-color: #FF9100;
+    color: #FFFFFF;
+}
+
+#img-header{
+    width: 80%;
+    margin-left: 30px;
 }

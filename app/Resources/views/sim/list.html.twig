@@ -7,14 +7,16 @@
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap/style/default.css') }}">
     {% endblock %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('bootstrap/img/logo_tt_header.png') }}" />
 </head>
 <body>
 <div class="container-fluid display-table">
     <div class="row display-table-row">
         <!-- side menu -->
         <div class="col-md-2 col-sm-1 hidden-xs display-table-cell valign-top" id="side-menu">
-            <h1 class="hidden-xs hidden-sm">Tunisie Telecom</h1>
+            <a href="{{ path('dashboard') }}" id="side-menu-header">
+                <img id="img-header" src="{{ asset('bootstrap/img/logo_tt_header.png') }}" class="hidden-xs hidden-sm">
+            </a>
             <ul>
                 <li class="link">
                     <a href="/">

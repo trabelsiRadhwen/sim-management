@@ -14,12 +14,12 @@
     <div class="row display-table-row">
         <!-- side menu -->
         <div class="col-md-2 col-sm-1 hidden-xs display-table-cell valign-top" id="side-menu">
-            <h1 class="hidden-xs hidden-sm">Tunisie Telecom</h1>
-
-            <br>
+            <a href="{{ path('dashboard') }}" id="side-menu-header">
+                <img id="img-header" src="{{ asset('bootstrap/img/logo_tt_header.png') }}" class="hidden-xs hidden-sm">
+            </a>
             <ul>
                 <li class="link active">
-                    <a href="/">
+                    <a href="{{ path('dashboard') }}">
                         <span class="glyphicon glyphicon-home"></span>
                         <span>Dashboard</span>
                     </a>
@@ -98,12 +98,9 @@
 
             {% block body %}
                 <div class="panel panel-default">
-                    <div class="panel-heading" id="main-color-bg">
-                        <h3 class="panel-title">Overiew</h3>
-                    </div>
                     <div class="panel-body">
                         <div class="col-md-3">
-                            <div class="well dash-box">
+                            <div id="dash-agent" class="well dash-box">
                                 <h2>
                                     <span class="glyphicon glyphicon-user" aria-hidden="true"> 50</span>
                                 </h2>
@@ -112,7 +109,7 @@
                         </div>
 
                         <div class="col-md-3">
-                            <div class="well dash-box">
+                            <div id="dash-sim" class="well dash-box">
                                 <h2>
                                     <span class="glyphicon glyphicon-credit-card"> 50</span>
                                 </h2>
@@ -121,7 +118,7 @@
                         </div>
 
                         <div class="col-md-3">
-                            <div class="well dash-box">
+                            <div id="dash-offre" class="well dash-box">
                                 <h2>
                                     <span class="glyphicon glyphicon-gift" aria-hidden="true"> 50</span>
                                 </h2>
@@ -130,9 +127,9 @@
                         </div>
 
                         <div class="col-md-3">
-                            <div class="well dash-box">
+                            <div id="dash-marque" class="well dash-box">
                                 <h2>
-                                    <span class="glyphicon glyphicon-gift" aria-hidden="true"> 4</span>
+                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"> 4</span>
                                 </h2>
                                 <h4>Marque</h4>
                             </div>
@@ -234,6 +231,7 @@
                                     <th class="col-md-1"><b>#</b></th>
                                     <th class="col-md-2">Nom</th>
                                     <th class="col-md-3">Prenom</th>
+                                    <th class="col-md-">Tel</th>
                                 </tr>
                                 </thead>
                                 <tbody>
