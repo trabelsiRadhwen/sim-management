@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ff2bb85-80eb-4071-854c-f5f2d4a4cd4d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/bootstrap/img/lock-icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bootstrap/img/avatar.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bootstrap/img/user-avatar.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bootstrap/img/user-profile.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/login/login.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/login/login.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,7 +36,7 @@
       <file leaf-file-name="default.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/bootstrap/style/default.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="612">
               <caret line="36" column="17" lean-forward="false" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
               <folding />
             </state>
@@ -518,7 +511,7 @@
       <workItem from="1525520866829" duration="19665000" />
       <workItem from="1525608993025" duration="2668000" />
       <workItem from="1525627029322" duration="3555000" />
-      <workItem from="1525642546575" duration="11955000" />
+      <workItem from="1525642546575" duration="12084000" />
     </task>
     <task id="LOCAL-00001" summary="second commit">
       <created>1525655969057</created>
@@ -534,11 +527,18 @@
       <option name="project" value="LOCAL" />
       <updated>1525656005927</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="second commit">
+      <created>1525656025287</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1525656025287</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="263847000" />
+    <option name="totallyTimeSpent" value="263976000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -960,7 +960,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/bootstrap/style/default.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="612">
           <caret line="36" column="17" lean-forward="false" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
           <folding />
         </state>
