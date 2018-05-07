@@ -11,52 +11,36 @@
 </head>
 <body>
 
-<style>
-
-
-
-
-</style>
-
 {% block body %}
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <br>
-            <div class="modal-header text-center">
-                <img src="{{ asset('bootstrap/img/avatar.png') }}">
+
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+            <h2 class="active"> Sign In </h2>
+
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <img src="{{ asset('bootstrap/img/lock-icon.png') }}" id="icon" alt="User Icon" />
             </div>
 
-            <div class="modal-body">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
 
-                {% if error %}
-                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                {% endif %}
+            <!-- Login Form -->
+            <form action="{{ path('login') }}" method="post">
+                <input type="text" id="username" class="fadeIn second" name="_username" placeholder="login" value="{{ username }}">
+                <input type="password" id="password" class="fadeIn third" name="_password" placeholder="password">
+                <input type="submit" class="fadeIn fourth" value="Sign in">
+            </form>
 
-                <form action="{{ path('login') }}" method="post">
-
-                    <div class="form-group">
-                        <label for="username">Username:</label>
-                        <input type="text" class="form-control" id="username" name="_username" value="{{ username }}" />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" name="_password" />
-                    </div>
-
-                    <div class="form-group text-center">
-                        <button type="submit">Sign in</button>
-                    </div>
-                </form>
-            </div>
         </div>
     </div>
 {% endblock %}
 
 {% block javascripts %}
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('bootstrap/script/default.js') }}"></script>
 {% endblock %}
 </body>
 </html>
+
+
