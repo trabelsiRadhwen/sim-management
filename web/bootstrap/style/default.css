@@ -13,6 +13,7 @@ html, body{
     background-color: #37474F;
     padding:0px;
     border-right: 1px;
+    width: 20%;
 }
 
 #side-menu h1{
@@ -33,7 +34,7 @@ html, body{
     padding: 12px 20px;
     text-decoration: none;
     color: #9fb1c2;
-    font-size:13px ;
+    font-size: 15px ;
     font-weight: bold;
     display: block;
 }
