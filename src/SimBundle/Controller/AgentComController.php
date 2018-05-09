@@ -32,7 +32,7 @@ class AgentComController extends Controller
             $em->persist($agent);
             $em->flush();
 
-            $this->addFlash('Success', 'New Sim added !');
+            $this->addFlash('Success', 'New agent commercial added !');
 
             return $this->redirectToRoute('agent_com_list');
         }
@@ -57,7 +57,7 @@ class AgentComController extends Controller
             $em->persist($agentCommercial);
             $em->flush();
 
-            $this->addFlash('Success', 'Sim Updated !');
+            $this->addFlash('Success', 'Agent commercial Updated !');
 
             return $this->redirectToRoute('agent_com_list');
         }
@@ -78,5 +78,19 @@ class AgentComController extends Controller
         return $this->render('agentCom/list.html.twig', [
             'agents' => $agent
         ]);
+    }
+
+    /**
+     * @Route("/agent/agent_com/delete/{id}}", name="agent_com_delete")
+     */
+    public function deleteSimAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $agentCom = $em->getRepository('SimBundle:Sim')->find($id);
+
+        $em->remove($agentCom);
+        $em->flush();
+        $this->addFlash('Success','Agent Commercial deleted !');
+
+        return $this->redirectToRoute('agent_com_list');
     }
 }

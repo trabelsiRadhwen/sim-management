@@ -33,7 +33,7 @@ class AgentReportController extends Controller
             $em->persist($agent);
             $em->flush();
 
-            $this->addFlash('Success', 'New agent report added !');
+            $this->addFlash('Success', 'New agent reporting added !');
 
             return $this->redirectToRoute('agent_report_list');
         }
@@ -58,7 +58,7 @@ class AgentReportController extends Controller
             $em->persist($agentReporting);
             $em->flush();
 
-            $this->addFlash('Success', 'agent reporting Updated !');
+            $this->addFlash('Success', 'Agent Reporting Updated !');
 
             return $this->redirectToRoute('agent_report_list');
         }
@@ -78,5 +78,19 @@ class AgentReportController extends Controller
         return $this->render('agentReport/list.html.twig', [
             'agents' => $agent
         ]);
+    }
+
+    /**
+     * @Route("/agent/agent_report/delete/{id}}", name="agent_report_delete")
+     */
+    public function deleteSimAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $agentRep = $em->getRepository('SimBundle:Sim')->find($id);
+
+        $em->remove($agentRep);
+        $em->flush();
+        $this->addFlash('Success','Agent Reporting deleted !');
+
+        return $this->redirectToRoute('agent_report_list');
     }
 }

@@ -80,4 +80,18 @@ class OffreController extends Controller
             'offres' => $offre
         ]);
     }
+
+    /**
+     * @Route("/sim/offre/delete/{id}}", name="offre_delete")
+     */
+    public function deleteSimAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $offre = $em->getRepository('SimBundle:Offre')->find($id);
+
+        $em->remove($offre);
+        $em->flush();
+        $this->addFlash('Success','Offre deleted !');
+
+        return $this->redirectToRoute('offre_list');
+    }
 }

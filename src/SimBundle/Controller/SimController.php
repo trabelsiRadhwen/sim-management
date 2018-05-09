@@ -122,11 +122,24 @@ class SimController extends Controller
     public function listeAction(){
         $em = $this->getDoctrine()->getManager();
         $sims = $em->getRepository('SimBundle\Entity\Sim')->findAll();
-        $agents = $em->getRepository('SimBundle:AgentCommercial')->findAll();
 
         return $this->render('sim/list.html.twig', [
             'sims' => $sims,
         ]);
+    }
+
+    /**
+     * @Route("/sim/delete/{id}}", name="sim_delete")
+     */
+    public function deleteSimAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $sim = $em->getRepository('SimBundle:Sim')->find($id);
+
+        $em->remove($sim);
+        $em->flush();
+        $this->addFlash('Success','Sim Removed!');
+
+        return $this->redirectToRoute('sim_list');
     }
 
     /**
