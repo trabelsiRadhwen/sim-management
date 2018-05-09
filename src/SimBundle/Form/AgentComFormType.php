@@ -3,6 +3,8 @@
 namespace SimBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,8 +17,8 @@ class AgentComFormType extends AbstractType
             ->add('password', PasswordType::class)
             ->add('nom')
             ->add('prenom')
-            ->add('email')
-            ->add('tel')
+            ->add('email', EmailType::class)
+            ->add('tel', NumberType::class)
             ->add('posteRegion');
     }
 

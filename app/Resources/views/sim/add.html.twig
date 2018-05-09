@@ -106,50 +106,33 @@
                         <div class="form-wrapper">
                             <div class="form-group">
                                 {{ form_start(addSimForm) }}
-
-                                {{ form_label(addSimForm.numeroSerie,'Numero de serie', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
-                                {{ form_widget(addSimForm.numeroSerie, {'attr': {'class': 'form-control', 'id': 'numero-serie'}}) }}
+                                {{ form_row(addSimForm.numeroSerie) }}
 
                             </div>
 
                             <div class="form-group">
-                                {{ form_label(addSimForm.marque,'Marque', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
-                                {{ form_widget(addSimForm.marque, {
-                                    'label' : 'Marque'
-                                }) }}
+                                {{ form_row(addSimForm.marque) }}
                             </div>
 
                             <div class="form-group">
-                                {{ form_label(addSimForm.offre,'Offre', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
-                                {{ form_widget(addSimForm.offre, {
-                                    'label' : 'Offre'
-                                }) }}
+                                {{ form_row(addSimForm.offre) }}
                             </div>
 
                             <div class="form-group">
-                                {{ form_label(addSimForm.numeroAppel,"Numero d'appel", {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
-                                {{ form_widget(addSimForm.numeroAppel, {
-                                    'label' : "Numero d'appel"
-                                }) }}
+                                {{ form_row(addSimForm.numeroAppel) }}
                             </div>
 
                             <div class="form-group">
-                                {{ form_label(addSimForm.etat,'Etat', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
-                                {{ form_widget(addSimForm.etat, {
-                                    'label' : 'Etat'
-                                }) }}
+                                {{ form_row(addSimForm.etat) }}
                             </div>
 
                             <div class="form-group">
-                                {{ form_label(addSimForm.agent,'Agent commercial', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
-                                {{ form_widget(addSimForm.agent, {
-                                    'label' : 'Agent commercial'
-                                }) }}
+                                {{ form_row(addSimForm.agent) }}
                             </div>
 
                             <div class="clearfix">
                                 <a href="{{ path('sim_list') }}" class="btn btn-warning pull-right">Annuler</a>
-                                <button type="submit" class="btn btn-success pull-right">Ajouter</button>
+                                <button type="submit" class="btn btn-success pull-right" formnovalidate>Ajouter</button>
                             </div>
                         </div>
                         {{ form_end(addSimForm) }}
@@ -170,7 +153,7 @@
 </div>
 
 {% block javascripts %}
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('bootstrap/script/default.js') }}"></script>
 {% endblock %}

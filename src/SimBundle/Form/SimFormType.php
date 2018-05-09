@@ -2,6 +2,10 @@
 
 namespace SimBundle\Form;
 
+use SimBundle\Entity\AgentCommercial;
+use SimBundle\Entity\Marque;
+use SimBundle\Entity\Offre;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -13,22 +17,25 @@ class SimFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('numeroSerie', NumberType::class)
-            ->add('marque',null, [
-                'placeholder' => '--Select marque--'
+        $builder->add('numeroSerie')
+            ->add('marque',EntityType::class, [
+                'placeholder' => '--Select marque--',
+                'class' => Marque::class
             ])
-            ->add('offre', null, [
-                'placeholder' => '--Select offre--'
+            ->add('offre', EntityType::class, [
+                'placeholder' => '--Select offre--',
+                'class' => Offre::class
             ])
-            ->add('numeroAppel',NumberType::class)
+            ->add('numeroAppel')
             ->add('etat', ChoiceType::class, [
                 'choices' => [
                     'Inactif' => 'Inactif',
                     'Actif' => 'Actif'
                 ]
             ])
-        ->add('agent', null, [
-            'placeholder' => '--select agent--'
+        ->add('agent', EntityType::class, [
+            'placeholder' => '--select agent--',
+            'class' => AgentCommercial::class
         ]);
     }
 
