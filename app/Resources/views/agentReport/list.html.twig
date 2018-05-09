@@ -97,6 +97,14 @@
                 </header>
             </div>
 
+            <div class="main-content">
+                {% for msg in app.session.flashBag.get('Success') %}
+                    <div class="alert alert-success">
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+            </div>
+
             {% block body %}
 
                 <div id="content">
@@ -137,8 +145,8 @@
                                         <span class="glyphicon glyphicon-pencil"></span>
                                         Edit
                                     </a>
-                                    <a href="#" class="btn btn-xs btn-danger">
-                                        <span class="glyphicon glyphicon-remove"></span>
+                                    <a href="{{ path('agent_report_delete',{'id':agent.id}) }}" class="btn btn-xs btn-danger">
+                                        <span class="glyphicon glyphicon-trash"></span>
                                         Delete
                                     </a>
                                 </td>

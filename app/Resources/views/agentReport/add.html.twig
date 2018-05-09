@@ -104,40 +104,33 @@
                         <div class="form-wrapper">
                             <div class="form-group">
                                 {{ form_start(addAgentForm) }}
-
-                                {{ form_label(addAgentForm.username,'Username', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
-                                {{ form_widget(addAgentForm.username, {'attr': {'class': 'form-control', 'id': 'numero-serie'}}) }}
+                                {{ form_row(addAgentForm.username, {'attr': {'class': 'form-control', 'id': 'numero-serie'}}) }}
 
                             </div>
 
                             <div class="form-group">
-                                {{ form_label(addAgentForm.password,'Password', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
-                                {{ form_widget(addAgentForm.password) }}
+                                {{ form_row(addAgentForm.password) }}
                             </div>
 
                             <div class="form-group">
-                                {{ form_label(addAgentForm.nom,'Nom', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
-                                {{ form_widget(addAgentForm.nom) }}
+                                {{ form_row(addAgentForm.nom) }}
                             </div>
 
                             <div class="form-group">
-                                {{ form_label(addAgentForm.prenom,"Prenom", {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
-                                {{ form_widget(addAgentForm.prenom) }}
+                                {{ form_row(addAgentForm.prenom) }}
                             </div>
 
                             <div class="form-group">
-                                {{ form_label(addAgentForm.email,'Email', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
-                                {{ form_widget(addAgentForm.email) }}
+                                {{ form_row(addAgentForm.email) }}
                             </div>
 
                             <div class="form-group">
-                                {{ form_label(addAgentForm.tel,'Tel', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
-                                {{ form_widget(addAgentForm.tel) }}
+                                {{ form_row(addAgentForm.tel) }}
                             </div>
 
                             <div class="clearfix">
                                 <a href="{{ path('agent_report_list') }}" class="btn btn-warning pull-right">Annuler</a>
-                                <button type="submit" class="btn btn-success pull-right">Ajouter</button>
+                                <button type="submit" class="btn btn-success pull-right" formnovalidate>Ajouter</button>
                             </div>
                         </div>
                         {{ form_end(addAgentForm) }}
@@ -158,7 +151,7 @@
 </div>
 
 {% block javascripts %}
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('bootstrap/script/default.js') }}"></script>
 {% endblock %}
