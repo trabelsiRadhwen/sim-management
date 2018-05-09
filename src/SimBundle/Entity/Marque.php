@@ -11,6 +11,7 @@ namespace SimBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="SimBundle\Repository\MarqueRepository")
@@ -26,6 +27,7 @@ class Marque
     private $id;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string")
      */
     private $marque;

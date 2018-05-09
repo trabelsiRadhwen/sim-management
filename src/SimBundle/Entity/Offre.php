@@ -9,8 +9,8 @@
 namespace SimBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="SimBundle\Repository\OffreRepository")
@@ -27,6 +27,7 @@ class Offre
     private $id;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string")
      */
     private $offre;

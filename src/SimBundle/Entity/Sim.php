@@ -27,13 +27,15 @@ class Sim
 
     /**
      * @Assert\NotBlank()
-     * @ORM\Column(type="string", length=10)
+     * @Assert\Length(min="10",max="10")
+     * @ORM\Column(type="integer")
      */
     private $numeroSerie;
 
     /**
      * @Assert\NotBlank()
-     * @ORM\Column(type="string", length=8)
+     * @Assert\Length(min="8",max="8")
+     * @ORM\Column(type="integer")
      */
     private $numeroAppel;
 

@@ -11,6 +11,7 @@ namespace SimBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="SimBundle\Repository\AgentComRepository")
@@ -47,12 +48,16 @@ class AgentCommercial
     private $prenom;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Email()
      * @ORM\Column(type="string")
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=8)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="8",max="8")
+     * @ORM\Column(type="integer")
      */
     private $tel;
 
