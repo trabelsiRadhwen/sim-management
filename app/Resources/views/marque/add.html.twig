@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}New marque{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bootstrap/style/default.css') }}">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+<div class="container-fluid display-table">
+    <div class="row display-table-row">
+        <!-- side menu -->
+        <div class="col-md-2 col-sm-1 hidden-xs display-table-cell valign-top" id="side-menu">
+            <a href="{{ path('dashboard') }}" id="side-menu-header">
+                <img id="img-header" src="{{ asset('bootstrap/img/logo_tt_header.png') }}" class="hidden-xs hidden-sm">
+            </a>
+            <ul>
+                <li class="link">
+                    <a href="/">
+                        <span class="glyphicon glyphicon-home"></span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="link">
+                    <a href="#collapse-post" data-toggle="collapse" aria-controls="collapse-post">
+                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                        <span>Carte Sim</span>
+                    </a>
+                    <ul class="collapse collapseable" id="collapse-post">
+                        <li><a href="{{ path('new_sim') }}">Ajouter</a> </li>
+                        <li><a href="{{ path('sim_list') }}">Lister</a> </li>
+                    </ul>
+                </li>
+
+                <li class="link active">
+                    <a href="#collapse-post-marque" data-toggle="collapse" aria-controls="collapse-post">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        <span>Marque</span>
+                    </a>
+                    <ul class="collapse collapseable" id="collapse-post-marque">
+                        <li><a href="{{ path('new_marque') }}">Ajouter</a> </li>
+                        <li><a href="{{ path('marque_list') }}">Lister</a> </li>
+                    </ul>
+                </li>
+
+                <li class="link">
+                    <a href="#collapse-post-offre" data-toggle="collapse" aria-controls="collapse-post">
+                        <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+                        <span>Offre</span>
+                    </a>
+                    <ul class="collapse collapseable" id="collapse-post-offre">
+                        <li><a href="{{ path('new_offre') }}">Ajouter</a> </li>
+                        <li><a href="{{ path('offre_list') }}">Lister</a> </li>
+                    </ul>
+                </li>
+
+                <li class="link">
+                    <a href="#collapse-post-agent-com" data-toggle="collapse" aria-controls="collapse-post">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        <span>Agents commerciaux</span>
+                    </a>
+                    <ul class="collapse collapseable" id="collapse-post-agent-com">
+                        <li><a href="{{ path('new_agent_com') }}">Ajouter</a></li>
+                        <li><a href="{{ path('agent_com_list') }}">Lister</a> </li>
+                    </ul>
+                </li>
+
+                <li class="link">
+                    <a href="#collapse-post-agent-report" data-toggle="collapse" aria-controls="collapse-post">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        <span class="hidden-sm hidden-sm">Agents Reporting</span>
+                    </a>
+                    <ul class="collapse collapseable" id="collapse-post-agent-report">
+                        <li><a href="{{ path('new_agent_report') }}">Ajouter</a> </li>
+                        <li><a href="{{ path('agent_report_list') }}">Lister</a> </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10 col-sm-11 display-table-cell valign-top">
+            <div class="row">
+                <header id="nav-header" class="clearfix">
+                    <div class="col-md-5">
+                        <nav class="navbar-default pull-left">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="side-menu">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </nav>
+                    </div>
+                    <div class="col-md-7 pull-right" >
+                        <ul class="pull-right">
+                            <li id="welcome" class="hidden-xs">Welcome to admin area</li>
+                            {% if (is_granted('ROLE_ADMIN')) %}
+                                <li><a href="{{ path('logout')}}" class="glyphicon glyphicon-log-out">Logout</a> </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </header>
+            </div>
+
+            {% block body %}
+                <div id="content">
+                    <header>
+                        <h2 class="page_title">New marque</h2>
+                    </header>
+
+                    <div class="content-inner">
+                        <div class="form-wrapper">
+
+                            <div class="form-group">
+                                {{ form_start(addMarqueForm) }}
+                                {{ form_row(addMarqueForm.marque) }}
+
+                            </div>
+
+                            <div class="clearfix">
+                                <a href="{{ path('marque_list') }}" class="btn btn-warning pull-right">Annuler</a>
+                                <button type="submit" class="btn btn-success pull-right" formnovalidate>Ajouter</button>
+                            </div>
+                        </div>
+                        {{ form_end(addMarqueForm) }}
+                    </div>
+                </div>
+            {% endblock %}
+
+            <div class="row">
+                <footer id="amdin-footer" class="clearfix">
+                    <div class="pull-left">
+                        <b>Copyright </b>&copy; 2018
+                    </div>
+                    <div class="pull-right">Tunisie Telecom</div>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bootstrap/script/default.js') }}"></script>
+{% endblock %}
+</body>
+</html>
