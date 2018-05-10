@@ -26,13 +26,24 @@
                 </li>
 
                 <li class="link">
-                    <a href="#collapse-post" data-toggle="collapse" aria-controls="collapse-post">
+                    <a href="#collapse-post-marque" data-toggle="collapse" aria-controls="collapse-post">
                         <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
                         <span>Carte Sim</span>
                     </a>
                     <ul class="collapse collapseable" id="collapse-post">
                         <li><a href="{{ path('new_sim') }}">Ajouter</a> </li>
                         <li><a href="{{ path('sim_list') }}">Lister</a> </li>
+                    </ul>
+                </li>
+
+                <li class="link">
+                    <a href="#collapse-post" data-toggle="collapse" aria-controls="collapse-post">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        <span>Marque</span>
+                    </a>
+                    <ul class="collapse collapseable" id="collapse-post-marque">
+                        <li><a href="{{ path('new_marque') }}">Ajouter</a> </li>
+                        <li><a href="{{ path('marque_list') }}">Lister</a> </li>
                     </ul>
                 </li>
 
