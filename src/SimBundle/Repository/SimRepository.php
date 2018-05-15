@@ -17,7 +17,7 @@ class SimRepository extends EntityRepository
     public function findSimOrderByMarque(){
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT s FROM SimBundle:Sim s  WHERE s.id BETWEEN 1 AND 5 ORDER BY s.marque ASC'
+                'SELECT s FROM SimBundle:Sim s ORDER BY s.marque ASC'
             )
             ->getResult();
     }

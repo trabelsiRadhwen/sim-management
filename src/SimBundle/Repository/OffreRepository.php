@@ -17,7 +17,7 @@ class OffreRepository extends EntityRepository
     public function findOffreOrderAsc(){
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT f FROM SimBundle:Offre f WHERE f.id BETWEEN 1 AND 5'
+                'SELECT f FROM SimBundle:Offre f'
             )
             ->getResult();
     }
