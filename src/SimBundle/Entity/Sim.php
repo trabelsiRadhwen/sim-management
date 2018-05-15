@@ -27,7 +27,7 @@ class Sim
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Length(min="10",max="10")
+     * @Assert\Length(max="10")
      * @ORM\Column(type="integer")
      */
     private $numeroSerie;
