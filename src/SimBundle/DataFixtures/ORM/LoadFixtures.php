@@ -35,7 +35,7 @@ class LoadFixtures implements FixtureInterface, ContainerAwareInterface
         $admin = new Administrateur();
         $admin->setUsername('admin');
         $encoder = $this->container->get('security.password_encoder');
-        $password = $encoder->encodePassword($admin,'admin_tt_sim_panel');
+        $password = $encoder->encodePassword($admin,'admin_tt');
         $admin->setPassword($password);
         $manager->persist($admin);
         $manager->flush();
