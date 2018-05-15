@@ -53,7 +53,7 @@ class MarqueController extends Controller
             $em->persist($marque);
             $em->flush();
 
-            $this->addFlash('Success', 'Offre Updated !');
+            $this->addFlash('Success', 'Marque Updated !');
 
             return $this->redirectToRoute('marque_list');
         }
