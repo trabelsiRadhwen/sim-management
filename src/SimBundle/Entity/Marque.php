@@ -33,6 +33,11 @@ class Marque
     private $marque;
 
     /**
+     * @ORM\ManyToOne(targetEntity="SimBundle\Entity\Offre", inversedBy="marque", cascade={"persist"})
+     */
+    private $offre;
+
+    /**
      * @ORM\OneToMany(targetEntity="SimBundle\Entity\Sim", mappedBy="marque")
      */
     private $sim;
@@ -88,6 +93,22 @@ class Marque
     public function setSim(Sim $sim)
     {
         $this->sim = $sim;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOffre()
+    {
+        return $this->offre;
+    }
+
+    /**
+     * @param mixed $offre
+     */
+    public function setOffre($offre)
+    {
+        $this->offre = $offre;
     }
 
     public function __toString()
