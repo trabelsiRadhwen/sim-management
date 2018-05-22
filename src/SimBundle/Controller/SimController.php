@@ -8,6 +8,8 @@
 
 namespace SimBundle\Controller;
 
+use mysqli;
+use function mysqli_query;
 use SimBundle\Entity\AgentCommercial;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

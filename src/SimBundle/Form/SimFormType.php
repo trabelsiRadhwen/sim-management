@@ -8,9 +8,9 @@ use SimBundle\Entity\Offre;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use const true;
 
 
 class SimFormType extends AbstractType
@@ -20,11 +20,7 @@ class SimFormType extends AbstractType
         $builder->add('numeroSerie')
             ->add('marque',EntityType::class, [
                 'placeholder' => '--Select marque--',
-                'class' => Marque::class
-            ])
-            ->add('offre', EntityType::class, [
-                'placeholder' => '--Select offre--',
-                'class' => Offre::class
+                'class' => Marque::class,
             ])
             ->add('numeroAppel')
             ->add('etat', ChoiceType::class, [
@@ -33,10 +29,10 @@ class SimFormType extends AbstractType
                     'Actif' => 'Actif'
                 ]
             ])
-        ->add('agent', EntityType::class, [
-            'placeholder' => '--select agent--',
-            'class' => AgentCommercial::class
-        ]);
+            ->add('agent', EntityType::class, [
+                'placeholder' => '--select agent--',
+                'class' => AgentCommercial::class
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -8,6 +8,7 @@
 
 namespace SimBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -27,7 +28,7 @@ class Sim
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Length(max="10")
+     * @Assert\Length(max="20")
      * @ORM\Column(type="integer")
      */
     private $numeroSerie;
@@ -47,15 +48,9 @@ class Sim
 
     /**
      * @Assert\NotBlank()
-     * @ORM\ManyToOne(targetEntity="SimBundle\Entity\Marque", inversedBy="sim")
+     * @ORM\ManyToOne(targetEntity="SimBundle\Entity\Marque", inversedBy="sim", cascade={"persist"})
      */
     private $marque;
-
-    /**
-     * @Assert\NotBlank()
-     * @ORM\ManyToOne(targetEntity="SimBundle\Entity\Offre", inversedBy="sim")
-     */
-    private $offre;
 
     /**
      * @ORM\ManyToOne(targetEntity="SimBundle\Entity\AgentCommercial", inversedBy="sim")
@@ -68,6 +63,14 @@ class Sim
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**
@@ -93,7 +96,6 @@ class Sim
     {
         return $this->numeroAppel;
     }
-
     /**
      * @param mixed $numeroAppel
      */
@@ -132,22 +134,6 @@ class Sim
     public function setMarque($marque)
     {
         $this->marque = $marque;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOffre()
-    {
-        return $this->offre;
-    }
-
-    /**
-     * @param mixed $offre
-     */
-    public function setOffre($offre)
-    {
-        $this->offre = $offre;
     }
 
     /**
