@@ -9,7 +9,6 @@
 namespace SimBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -33,20 +32,14 @@ class Offre
     private $offre;
 
     /**
+     * @ORM\OneToMany(targetEntity="SimBundle\Entity\Marque", mappedBy="offre")
+     */
+    private $marque;
+
+    /**
      * @ORM\Column(type="text")
      */
     private $description;
-
-
-    /**
-     * @ORM\OneToMany(targetEntity="SimBundle\Entity\Sim", mappedBy="offre")
-     */
-    private $sim;
-
-    public function __construct()
-    {
-        $this->sim = new ArrayCollection();
-    }
 
     /**
      * @return mixed
@@ -99,18 +92,19 @@ class Offre
     /**
      * @return mixed
      */
-    public function getSim()
+    public function getMarque()
     {
-        return $this->sim;
+        return $this->marque;
     }
 
     /**
-     * @param mixed $sim
+     * @param mixed $marque
      */
-    public function setSim(Sim $sim)
+    public function setMarque($marque)
     {
-        $this->sim = $sim;
+        $this->marque = $marque;
     }
+
 
     public function __toString()
     {
