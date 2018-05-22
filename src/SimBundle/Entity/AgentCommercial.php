@@ -56,7 +56,7 @@ class AgentCommercial
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Length(min="8",max="8")
+     * @Assert\Length(max="8")
      * @ORM\Column(type="integer")
      */
     private $tel;
