@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <form class="form-horizontal" action="{{ path('import') }}" method="post" enctype="multipart/form-data">
+
+        <input type="file" name="file" id="file">
+
+        <button type="submit" id="submit" name="Import" class="btn btn-success">Import</button>
+    </form>
+{% endblock %}
