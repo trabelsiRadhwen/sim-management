@@ -36,7 +36,7 @@
                     </ul>
                 </li>
 
-                <li class="link">
+                <li class="link active">
                     <a href="#collapse-post-marque" data-toggle="collapse" aria-controls="collapse-post">
                         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                         <span>Marque</span>
@@ -47,7 +47,7 @@
                     </ul>
                 </li>
 
-                <li class="link active">
+                <li class="link">
                     <a href="#collapse-post-offre" data-toggle="collapse" aria-controls="collapse-post">
                         <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
                         <span>Offre</span>
@@ -135,6 +135,7 @@
                         <tr>
                             <th>#</th>
                             <th>Marque</th>
+                            <th>Offre</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -143,6 +144,7 @@
                             <tr>
                                 <td>{{ marque.id }}</td>
                                 <td>{{ marque.marque }}</td>
+                                <td>{{ marque.offre }}</td>
                                 <td>
                                     <a href="{{ path('edit_marque',{'id':marque.id}) }}" class="btn btn-xs btn-warning">
                                         <span class="glyphicon glyphicon-pencil"></span>
