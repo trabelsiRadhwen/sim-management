@@ -17,7 +17,7 @@ class MarqueRepository extends EntityRepository
     public function findMarque(){
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT m FROM SimBundle:Marque m  WHERE m.id BETWEEN 1 AND 5 ORDER BY m.marque ASC'
+                'SELECT m FROM SimBundle:Marque m'
             )
             ->getResult();
     }
