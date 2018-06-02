@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>{% block title %}Dashboard{% endblock %}</title>
     {% block stylesheets %}
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap/style/default.css') }}">
     {% endblock %}
@@ -55,6 +56,17 @@
                     <ul class="collapse collapseable" id="collapse-post-offre">
                         <li><a href="{{ path('new_offre') }}">Ajouter</a> </li>
                         <li><a href="{{ path('offre_list') }}">Liste</a> </li>
+                    </ul>
+                </li>
+
+                <li class="link">
+                    <a href="#collapse-post-num" data-toggle="collapse" aria-controls="collapse-post">
+                        <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                        <span>Numero Appel</span>
+                    </a>
+                    <ul class="collapse collapseable" id="collapse-post-num">
+                        <li><a href="{{ path('new_numero_appel') }}">Ajouter</a> </li>
+                        <li><a href="{{ path('num_list') }}">Lister</a> </li>
                     </ul>
                 </li>
 
