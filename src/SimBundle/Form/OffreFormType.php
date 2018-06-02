@@ -13,7 +13,11 @@ class OffreFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('offre')
-            ->add('description');
+            ->add('description')
+            ->add('marque', EntityType::class,[
+               'placeholder' => '--Select marque--',
+                'class' => Marque::class
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

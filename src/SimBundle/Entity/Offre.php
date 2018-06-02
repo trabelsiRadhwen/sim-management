@@ -32,7 +32,8 @@ class Offre
     private $offre;
 
     /**
-     * @ORM\OneToMany(targetEntity="SimBundle\Entity\Marque", mappedBy="offre")
+     * @ORM\ManyToOne(targetEntity="SimBundle\Entity\Marque", inversedBy="offre")
+     * @ORM\JoinColumn(name="id_marque", referencedColumnName="id", nullable=true)
      */
     private $marque;
 

@@ -59,6 +59,17 @@
                 </li>
 
                 <li class="link">
+                    <a href="#collapse-post-num" data-toggle="collapse" aria-controls="collapse-post">
+                        <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                        <span>Numero Appel</span>
+                    </a>
+                    <ul class="collapse collapseable" id="collapse-post-num">
+                        <li><a href="{{ path('new_numero_appel') }}">Ajouter</a> </li>
+                        <li><a href="{{ path('num_list') }}">Lister</a> </li>
+                    </ul>
+                </li>
+
+                <li class="link">
                     <a href="#collapse-post-agent-com" data-toggle="collapse" aria-controls="collapse-post">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                         <span>Agents commerciaux</span>
@@ -136,6 +147,7 @@
                             <th>#</th>
                             <th>Offre</th>
                             <th>Description</th>
+                            <th>Marque</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -145,6 +157,7 @@
                                 <td>{{ offre.id }}</td>
                                 <td>{{ offre.offre }}</td>
                                 <td>{{ offre.description }}</td>
+                                <td><span class="label label-success">{{ offre.marque }}</span></td>
                                 <td>
                                     <a href="{{ path('edit_offre',{'id':offre.id}) }}" class="btn btn-xs btn-warning">
                                         <span class="glyphicon glyphicon-pencil"></span>
