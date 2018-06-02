@@ -33,9 +33,14 @@ class Marque
     private $marque;
 
     /**
-     * @ORM\ManyToOne(targetEntity="SimBundle\Entity\Offre", inversedBy="marque", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="SimBundle\Entity\Offre", mappedBy="marque", cascade={"persist"})
      */
     private $offre;
+
+    /**
+     * @ORM\OneToMany(targetEntity="SimBundle\Entity\NumeroAppel", mappedBy="marque")
+     */
+    private $numeroAppel;
 
     /**
      * @ORM\OneToMany(targetEntity="SimBundle\Entity\Sim", mappedBy="marque")
@@ -44,6 +49,8 @@ class Marque
 
     public function __construct()
     {
+        $this->numeroAppel = new ArrayCollection();
+        $this->offre = new ArrayCollection();
         $this->sim = new ArrayCollection();
     }
 
@@ -77,6 +84,22 @@ class Marque
     public function setMarque($marque)
     {
         $this->marque = $marque;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNumeroAppel()
+    {
+        return $this->numeroAppel;
+    }
+
+    /**
+     * @param mixed $numeroAppel
+     */
+    public function setNumeroAppel($numeroAppel)
+    {
+        $this->numeroAppel = $numeroAppel;
     }
 
     /**
