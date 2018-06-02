@@ -59,6 +59,17 @@
                 </li>
 
                 <li class="link">
+                    <a href="#collapse-post-num" data-toggle="collapse" aria-controls="collapse-post">
+                        <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                        <span>Numero Appel</span>
+                    </a>
+                    <ul class="collapse collapseable" id="collapse-post-num">
+                        <li><a href="{{ path('new_numero_appel') }}">Ajouter</a> </li>
+                        <li><a href="{{ path('num_list') }}">Lister</a> </li>
+                    </ul>
+                </li>
+
+                <li class="link">
                     <a href="#collapse-post-agent-com" data-toggle="collapse" aria-controls="collapse-post">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                         <span>Agents commerciaux</span>
@@ -136,7 +147,6 @@
                             <th>#</th>
                             <th>Numero de serie</th>
                             <th>Marque</th>
-                            <th>Numero d'appel</th>
                             <th>Agent</th>
                             <th>Etat</th>
 
@@ -149,7 +159,6 @@
                                 <td>{{ sim.id }}</td>
                                 <td>{{ sim.numeroSerie }}</td>
                                 <td>{{ sim.marque }}</td>
-                                <td>{{ sim.numeroAppel }}</td>
                                 <td>{{ sim.agent }}</td>
                                 <td><span class="label label-success">{{ sim.etat }}</span></td>
                                 <td>
@@ -157,7 +166,7 @@
                                         <span class="glyphicon glyphicon-pencil"></span>
                                         Edit
                                     </a>
-                                    <a href="{{ path('sim_delete',{'id':sim.id}) }}" class="btn btn-xs btn-danger">
+                                    <a href="{{ path('sim_delete',{'id':sim.id}) }}" id="delete" class="btn btn-xs btn-danger">
                                         <span class="glyphicon glyphicon-trash"></span>
                                         Delete
                                     </a>

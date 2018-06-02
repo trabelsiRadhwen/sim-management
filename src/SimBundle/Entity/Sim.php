@@ -8,7 +8,6 @@
 
 namespace SimBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -35,20 +34,13 @@ class Sim
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Length(min="8",max="8")
-     * @ORM\Column(type="integer")
-     */
-    private $numeroAppel;
-
-    /**
-     * @Assert\NotBlank()
      * @ORM\Column(type="string")
      */
     private $etat;
 
     /**
      * @Assert\NotBlank()
-     * @ORM\ManyToOne(targetEntity="SimBundle\Entity\Marque", inversedBy="sim", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="SimBundle\Entity\Marque", inversedBy="sim")
      */
     private $marque;
 
@@ -87,21 +79,6 @@ class Sim
     public function setNumeroSerie($numeroSerie)
     {
         $this->numeroSerie = $numeroSerie;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNumeroAppel()
-    {
-        return $this->numeroAppel;
-    }
-    /**
-     * @param mixed $numeroAppel
-     */
-    public function setNumeroAppel($numeroAppel)
-    {
-        $this->numeroAppel = $numeroAppel;
     }
 
     /**
