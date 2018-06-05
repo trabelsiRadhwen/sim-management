@@ -247,3 +247,45 @@ html, body{
     width: 80%;
     margin-left: 30px;
 }
+
+#import-file {
+    border: dashed;
+    margin-top: 10px;
+    border-color: lightslategray;
+    padding: 20px;
+    width: 600px;
+    height: 500px;
+    overflow: auto;
+    border-radius: 30px;
+}
+
+#file {
+    margin-left: 150px;
+    position: relative;
+    margin-top: 20%;
+    display: block;
+}
+
+#submit {
+    margin-left: 200px;
+    position: relative;
+    display: inline;
+}
+
+#import {
+    margin-top: 20px;
+    margin-left: 110px;
+    width: 60%;
+    height: 50%;
+}
+
+#import_link {
+    margin-top: 25px;
+    margin-right: 8px;
+}
+
+#note {
+    margin-top: 10px;
+    margin-left: 170px;
+    color: lightslategray;
+}

@@ -7,6 +7,7 @@ use SimBundle\Entity\Marque;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,12 +20,9 @@ class SimFormType extends AbstractType
                 'placeholder' => '--Select marque--',
                 'class' =>Marque::class
             ])
-            ->add('etat', ChoiceType::class, [
-                'choices' => [
-                    'Inactif' => 'Inactif',
-                    'Actif' => 'Actif'
-                ]
-            ])
+            ->add('etat', TextType::class, array(
+                'data' => 'Inactif',
+            ))
             ->add('agent', EntityType::class, [
                 'placeholder' => '--Select agent commercial--',
                 'class' => AgentCommercial::class

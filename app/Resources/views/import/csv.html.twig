@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>{% block title %}Dashboard{% endblock %}</title>
+    <title>{% block title %}Import File{% endblock %}</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap/style/default.css') }}">
@@ -20,7 +20,7 @@
             <ul>
                 <li class="link">
                     <a href="{{ path('dashboard') }}">
-                        <span class="glyphicon glyphicon-home"></span>
+                        <span class="glyphicon glyphicon-dashboard"></span>
                         <span>Dashboard</span>
                     </a>
                 </li>
@@ -82,12 +82,11 @@
 
                 <li class="link">
                     <a href="#collapse-post-agent-report" data-toggle="collapse" aria-controls="collapse-post">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                        <span class="hidden-sm hidden-sm">Agents Reporting</span>
+                        <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                        <span class="hidden-sm hidden-sm">Suivre vente</span>
                     </a>
                     <ul class="collapse collapseable" id="collapse-post-agent-report">
-                        <li><a href="{{ path('new_agent_report') }}">Ajouter</a> </li>
-                        <li><a href="{{ path('agent_report_list') }}">Liste</a> </li>
+                        <li><a href="#">Consulter</a></li>
                     </ul>
                 </li>
             </ul>
@@ -109,7 +108,7 @@
 
                     <div class="col-md-7 pull-right">
                         <ul class="pull-right">
-                            <li id="welcome" class="hidden-xs">Welcome to admin area</li>
+                            <li id="welcome" class="hidden-xs"></li>
                             {% if (is_granted('ROLE_ADMIN')) %}
                                 <li><a href="{{ path('logout')}}" class="glyphicon glyphicon-log-out">Logout</a> </li>
                             {% endif %}
@@ -119,12 +118,14 @@
             </div>
 
             {% block body %}
-
                 <form class="form-horizontal" action="{{ path('import') }}" method="post" enctype="multipart/form-data">
-
-                    <input type="file" name="file" id="file">
-
-                    <button type="submit" id="submit" name="Import" class="btn btn-success">Import</button>
+                    <div id="import-file" class="container">
+                        <img id="import" src="{{ asset('bootstrap/img/csv.png') }}">
+                        <input type="file" name="file" id="file" placeholder="file.csv">
+                        <button type="submit" id="submit" name="Import" class="btn btn-success">Import</button>
+                        <a id="back" class="btn btn-warning" href="{{ path('new_sim') }}">Annuler</a>
+                        <p id="note">Le fichier doit avoir l'extension .csv</p>
+                    </div>
                 </form>
             {% endblock %}
 

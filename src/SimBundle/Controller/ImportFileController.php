@@ -32,35 +32,40 @@ class ImportFileController extends Controller
 
         $results = array();
         $row = 0;
-        if (isset($_POST["Import"])){
+        if (isset($_POST["Import"])) {
+
             $filename = $_FILES["file"]["tmp_name"];
-            /*$lines = file($filename);
-            echo count($lines);*/
-
+            $lines = file($filename);
+            $number = count($lines);
             $file = fopen($filename, "r");
-            while (($getData = fgetcsv($file, 10000, ";")) !== FALSE){
-                $num = count($getData);
-                for ($c = 0; $c <= $num ; $c++){
-
-                        $results[$row] = array(
-                            'numeroSerie' => $getData[0],
-                            'numeroAppel' => $getData[1],
-                            'etat' => $getData[2],
-                            'marque' => $getData[3],
-                            'username' => $getData[4],
-                            'password' => $getData[5],
-                            'nom' => $getData[6],
-                            'prenom' => $getData[7],
-                            'email' => $getData[8],
-                            'tel' => $getData[9],
-                            'posteRegion' => $getData[10]
-                        );
+            while (!feof($file)) {
+                while (($ar = fgetcsv($file, 1000, ';')) !== FALSE) {
+                    $num = count($ar);
+                    //echo $num;
                     $row++;
+                    for ($c = 0; $c < $num; $c++) {
+                        $results[$num] = array(
+                            'numeroSerie' => $ar[0],
+                            'etat' => $ar[1],
+                            'marque' => $ar[2],
+                            'username' => $ar[3],
+                            'password' => $ar[4],
+                            'nom' => $ar[5],
+                            'prenom' => $ar[6],
+                            'email' => $ar[7],
+                            'tel' => $ar[8],
+                            'posteRegion' => $ar[9],
+                            'numeroAppel' => $ar[10],
+                        );
+                    }
+                    print_r($results);
+                    // print the array
+                    echo "<br>";
                 }
-                //print_r($results);
             }
             fclose($file);
         }
+
         /*$em = $this->getDoctrine()->getManager();
 
         foreach ($results as $result){

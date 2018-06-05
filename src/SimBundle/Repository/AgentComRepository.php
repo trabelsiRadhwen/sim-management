@@ -21,4 +21,15 @@ class AgentComRepository extends EntityRepository
             )
             ->getResult();
     }
+
+    public function findAgentByName()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT a.prenom as pren, a.nom as nom FROM SimBundle:AgentCommercial a GROUP BY a.posteRegion'
+            )
+            ->getResult();
+    }
+
+
 }
