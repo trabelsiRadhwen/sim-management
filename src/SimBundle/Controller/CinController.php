@@ -5,14 +5,15 @@ namespace SimBundle\Controller;
 use function serialize;
 use SimBundle\Entity\Cin;
 use SimBundle\Form\CinFormType;
+use SimBundle\SimBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-
 class CinController extends Controller
 {
+
     /**
      * @Route("/api/cin/{id}")
      */
