@@ -18,6 +18,11 @@ offres:
     prefix: /api
     resource: '@ApiBundle/Controller/OffreController.php'
 
+marques:
+    type:     rest
+    prefix: /api
+    resource: '@ApiBundle/Controller/MarqueController.php'
+
 sim:
     resource: "@SimBundle/Controller/"
     type:     annotation
