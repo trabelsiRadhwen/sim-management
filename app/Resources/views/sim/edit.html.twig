@@ -21,7 +21,7 @@
             <ul>
                 <li class="link">
                     <a href="/">
-                        <span class="glyphicon glyphicon-home"></span>
+                        <span class="glyphicon glyphicon-dashboard"></span>
                         <span>Dashboard</span>
                     </a>
                 </li>
@@ -71,17 +71,6 @@
                 </li>
 
                 <li class="link">
-                    <a href="#collapse-post-agent-com" data-toggle="collapse" aria-controls="collapse-post">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                        <span>Agents commerciaux</span>
-                    </a>
-                    <ul class="collapse collapseable" id="collapse-post-agent-com">
-                        <li><a href="{{ path('new_agent_com') }}">Ajouter</a></li>
-                        <li><a href="{{ path('agent_com_list') }}">Lister</a> </li>
-                    </ul>
-                </li>
-
-                <li class="link">
                     <a href="#collapse-post-cin" data-toggle="collapse" aria-controls="collapse-post">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                         <span>Carte Cin</span>
@@ -89,6 +78,17 @@
                     <ul class="collapse collapseable" id="collapse-post-cin">
                         <li><a href="{{ path('new_cin') }}">Ajouter</a></li>
                         <li><a href="{{ path('cin_list') }}">Lister</a></li>
+                    </ul>
+                </li>
+
+                <li class="link">
+                    <a href="#collapse-post-agent-com" data-toggle="collapse" aria-controls="collapse-post">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        <span>Agents commerciaux</span>
+                    </a>
+                    <ul class="collapse collapseable" id="collapse-post-agent-com">
+                        <li><a href="{{ path('new_agent_com') }}">Ajouter</a></li>
+                        <li><a href="{{ path('agent_com_list') }}">Lister</a></li>
                     </ul>
                 </li>
 
