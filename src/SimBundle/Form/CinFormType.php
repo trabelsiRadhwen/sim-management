@@ -2,8 +2,8 @@
 
 namespace SimBundle\Form;
 
-use Doctrine\DBAL\Types\DateType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +14,10 @@ class CinFormType extends AbstractType
         $builder->add('cin')
             ->add('nom')
             ->add('prenom')
-            ->add('dob')
+            ->add('dob', DateType::class, [
+                'widget' => 'single_text',
+                'attr' => ['class' => 'js-datepicker'],
+            ])
             ->add('place');
     }
 

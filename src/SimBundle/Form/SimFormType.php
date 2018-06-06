@@ -4,6 +4,7 @@ namespace SimBundle\Form;
 
 use SimBundle\Entity\AgentCommercial;
 use SimBundle\Entity\Marque;
+use SimBundle\Entity\NumeroAppel;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -23,6 +24,10 @@ class SimFormType extends AbstractType
             ->add('etat', TextType::class, array(
                 'data' => 'Inactif',
             ))
+            ->add('numeroAppel', EntityType::class, [
+                'placeholder' => '--Select numero appel--',
+                'class' => NumeroAppel::class
+            ])
             ->add('agent', EntityType::class, [
                 'placeholder' => '--Select agent commercial--',
                 'class' => AgentCommercial::class

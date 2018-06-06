@@ -14,6 +14,14 @@ use Doctrine\ORM\EntityRepository;
 class SimRepository extends EntityRepository
 {
 
+    public function findSimsInactif()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT s FROM SimBundle:Sim s WHERE s.etat = \'inactif\''
+            )->getResult();
+    }
+
     public function findSimOrderByMarque(){
         return $this->getEntityManager()
             ->createQuery(

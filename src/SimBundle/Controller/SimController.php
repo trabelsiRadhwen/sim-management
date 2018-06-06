@@ -123,7 +123,7 @@ class SimController extends Controller
      */
     public function listeAction(){
         $em = $this->getDoctrine()->getManager();
-        $sims = $em->getRepository('SimBundle\Entity\Sim')->findAll();
+        $sims = $em->getRepository('SimBundle\Entity\Sim')->findSimsInactif();
 
         return $this->render('sim/list.html.twig', [
             'sims' => $sims,
