@@ -49,6 +49,13 @@ class Sim
      */
     private $agent;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="SimBundle\Entity\NumeroAppel", inversedBy="sim")\
+     * @ORM\JoinColumn(name="id_num", referencedColumnName="id", nullable=true)
+     */
+    private $numeroAppel;
+
     /**
      * @return mixed
      */
@@ -127,5 +134,21 @@ class Sim
     public function setAgent($agent)
     {
         $this->agent = $agent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNumeroAppel()
+    {
+        return $this->numeroAppel;
+    }
+
+    /**
+     * @param mixed $numeroAppel
+     */
+    public function setNumeroAppel($numeroAppel)
+    {
+        $this->numeroAppel = $numeroAppel;
     }
 }
