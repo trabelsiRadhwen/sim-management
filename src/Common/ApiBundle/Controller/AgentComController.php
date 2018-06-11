@@ -114,4 +114,19 @@ class AgentComController extends Controller
         }
     }
 
+    /**
+     * @param $id
+     * @Rest\View()
+     * @Rest\Get("agents/com/{username}/login")
+     */
+    public function findAgentComAction($username)
+    {
+        $agent = $this->getDoctrine()->getManager()->getRepository("SimBundle:AgentCommercial")->findOneBy(["username" => $username]);
+        if (empty($agent)) {
+            return new JsonResponse(['message' => 'AgentCom not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        return $agent;
+    }
+
 }

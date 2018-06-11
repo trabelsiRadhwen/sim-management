@@ -117,4 +117,46 @@ class SimController extends Controller
         }
     }
 
+
+    /**
+     * @Rest\View()
+     * @Rest\Get("sims/vente/marque")
+     */
+    public function getVenteAction()
+    {
+        $sims = $this->getDoctrine()->getManager()->getRepository("SimBundle:Sim")->findSalesMarque();
+        if (empty($sims)) {
+            return new JsonResponse(['message' => 'Sim not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        return $sims;
+    }
+
+    /**
+     * @Rest\View()
+     * @Rest\Get("sims/vente/poste")
+     */
+    public function getPosteAction()
+    {
+        $sims = $this->getDoctrine()->getManager()->getRepository("SimBundle:Sim")->findSalesPoste();
+        if (empty($sims)) {
+            return new JsonResponse(['message' => 'Sim not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        return $sims;
+    }
+
+    /**
+     * @Rest\View()
+     * @Rest\Get("sims/vente/agent/com")
+     */
+    public function getSalesAction()
+    {
+        $sims = $this->getDoctrine()->getManager()->getRepository("SimBundle:Sim")->findSalesAgentCom();
+        if (empty($sims)) {
+            return new JsonResponse(['message' => 'Sim not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        return $sims;
+    }
 }
