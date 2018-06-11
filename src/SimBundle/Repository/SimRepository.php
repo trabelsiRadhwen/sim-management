@@ -14,40 +14,40 @@ use Doctrine\ORM\EntityRepository;
 class SimRepository extends EntityRepository
 {
 
-    public function findSimsInactif()
-    {
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT s FROM SimBundle:Sim s WHERE s.etat = \'inactif\''
-            )->getResult();
-    }
-
-    public function findSimOrderByMarque(){
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT s FROM SimBundle:Sim s ORDER BY s.marque ASC'
-            )
-            ->getResult();
-    }
-
-    public function findMarqueSim()
+    public function findSalesMarque()
     {
         return $this->getEntityManager()
             ->createQuery(
                 'SELECT COUNT (s.id) as mar , m.marque as smar
                       FROM SimBundle:Sim s 
                       JOIN s.marque m 
-                      WHERE s.etat = \'inactif\'
+                      WHERE s.etat = \'actif\'
                       GROUP BY m.marque'
             )
             ->getResult();
     }
 
-    public function findSalesByAgent()
+    public function findSalesPoste()
     {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT g as ag, count(u.id) as num FROM SimBundle:Sim g JOIN g.agent u GROUP BY u.id'
+                "SELECT COUNT (a.id) as nb, u.posteRegion as poste
+                      FROM SimBundle:Sim a 
+                      JOIN a.agent u 
+                      where a.etat = 'actif'
+                      GROUP BY u.posteRegion"
+            )->getResult();
+    }
+
+    public function findSalesAgentCom()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                "SELECT COUNT (a.id) as nbr, u.nom as nom
+                      FROM SimBundle:Sim a 
+                      JOIN a.agent u 
+                      where a.etat = 'actif'
+                      GROUP BY u.nom"
             )->getResult();
     }
 }
