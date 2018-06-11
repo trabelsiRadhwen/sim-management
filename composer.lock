@@ -4,8 +4,110 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6231552c3d558369beb8f653287814e3",
+    "content-hash": "f0e34b5f38a7d8c63be9325a0ddfe663",
     "packages": [
+        {
+            "name": "avro/case-bundle",
+            "version": "v0.1.2",
+            "target-dir": "Avro/CaseBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jdewit/AvroCaseBundle.git",
+                "reference": "594a9501161a95a1b8b8d535acadf65f5f56671d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jdewit/AvroCaseBundle/zipball/594a9501161a95a1b8b8d535acadf65f5f56671d",
+                "reference": "594a9501161a95a1b8b8d535acadf65f5f56671d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "twig/twig": "*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Avro\\CaseBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joris de Wit",
+                    "email": "joris.w.dewit@gmail.com"
+                }
+            ],
+            "description": "Symfony2 Case Converter Bundle",
+            "homepage": "http://github.com/jdewit/AvroCaseBundle",
+            "keywords": [
+                "camel",
+                "converter",
+                "pascal",
+                "title"
+            ],
+            "time": "2013-01-15T15:24:55+00:00"
+        },
+        {
+            "name": "avro/csv-bundle",
+            "version": "v0.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jdewit/AvroCsvBundle.git",
+                "reference": "10329c8972ed1a4fb93108d076a8b7772c3e94a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jdewit/AvroCsvBundle/zipball/10329c8972ed1a4fb93108d076a8b7772c3e94a0",
+                "reference": "10329c8972ed1a4fb93108d076a8b7772c3e94a0",
+                "shasum": ""
+            },
+            "require": {
+                "avro/case-bundle": "*",
+                "php": "^5.5.9|>=7.0.8"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "*",
+                "doctrine/orm": "*",
+                "phpunit/phpunit": "~4.0|~5.0",
+                "symfony/config": "~2.8|~3.0|~4.0",
+                "symfony/dependency-injection": "~2.8|~3.0|~4.0",
+                "symfony/form": "~2.8|~3.0|~4.0",
+                "twig/twig": "*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Avro\\CsvBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joris de Wit",
+                    "email": "joris.w.dewit@gmail.com"
+                }
+            ],
+            "description": "Symfony2 CSV Bundle",
+            "homepage": "http://github.com/jdewit/AvroCsvBundle",
+            "keywords": [
+                "csv",
+                "export",
+                "import"
+            ],
+            "time": "2018-03-02T16:18:33+00:00"
+        },
         {
             "name": "cmen/google-charts-bundle",
             "version": "3.0.1",
