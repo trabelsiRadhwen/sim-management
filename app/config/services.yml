@@ -38,10 +38,3 @@ services:
     data_fixture.fixture:
             class: SimBundle\DataFixtures\ORM\LoadFixtures
             tags: [doctrine.fixture.orm]
-
-    console_command.csv_import:
-      class: SimBundle\Command\CsvImportCommand
-      arguments:
-        - "@doctrine.orm.entity_manager"
-      tags:
-        - { name: console.command }

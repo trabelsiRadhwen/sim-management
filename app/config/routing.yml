@@ -8,11 +8,6 @@ agent_com:
     prefix: /api
     resource: '@ApiBundle/Controller/AgentComController.php'
 
-agent_report:
-    type:     rest
-    prefix: /api
-    resource: '@ApiBundle/Controller/AgentReportController.php'
-
 offres:
     type:     rest
     prefix: /api
