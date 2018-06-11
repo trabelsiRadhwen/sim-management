@@ -185,11 +185,11 @@ html, body{
 }
 
 .panel-default{
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .panel-body{
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #main-color-bg{
@@ -250,7 +250,7 @@ html, body{
 
 #import-file {
     border: dashed;
-    margin-top: 10px;
+    margin-top: 20px;
     border-color: lightslategray;
     padding: 20px;
     width: 600px;
@@ -288,4 +288,27 @@ html, body{
     margin-top: 10px;
     margin-left: 170px;
     color: lightslategray;
+}
+
+.stat-chart {
+    min-width: 400px;
+    height: 400px;
+    margin-left: 60px;
+    margin-bottom: 50px;
+    display: inline-block;
+}
+
+.chart-panel {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.chart-body {
+    margin-top: 20px;
+}
+
+#logout {
+    font-size: 16px;
+    font-weight: bold;
+    height: 10px;
 }
