@@ -98,7 +98,7 @@
                         <span class="hidden-sm hidden-sm">Suivre vente</span>
                     </a>
                     <ul class="collapse collapseable" id="collapse-post-agent-report">
-                        <li><a href="#">Consulter</a></li>
+                        <li><a href="{{ path('chart') }}">Consulter</a></li>
                     </ul>
                 </li>
             </ul>
@@ -171,113 +171,11 @@
                     </div>
                 </div>
 
-                <div class="container-fluid">
-                    <div class="col-md-6" id="content">
-                        <h2 class="sub-header">Carte Sim</h2>
-
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th class="col-md-1"><b>#</b></th>
-                                    <th class="col-md-2">Numero de serie</th>
-                                    <th class="col-md-3">Marque</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for sim in sims %}
-                                    <tr>
-                                        <td class="col-md-1">{{ sim.id }}</td>
-                                        <td class="col-md-2">{{ sim.numeroSerie }}</td>
-                                        <td class="col-md-3">{{ sim.marque }}</td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6" id="content">
-                        <h2 class="sub-header">Offre</h2>
-                        <div class="table-responsive">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th class="col-md-1"><b>#</b></th>
-                                        <th class="col-md-2">Offre</th>
-                                        <th class="col-md-3">Description</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for offre in offres %}
-                                        <tr>
-                                            <td class="col-md-1">{{ offre.id }}</td>
-                                            <td class="col-md-2">{{ offre.offre }}</td>
-                                            <td class="col-md-3">{{ offre.description }}</td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="container-fluid">
-                    <div class="col-md-6" id="content">
-                        <h2 class="sub-header">Agent Commercial</h2>
-
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead>
-                                <tr>
-                                    <th class="col-md-1"><b>#</b></th>
-                                    <th class="col-md-3">nom</th>
-                                    <th class="col-md-4">prenom</th>
-                                    <th class="col-md-2">Poste Region</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for agent in agentsCom %}
-                                    <tr>
-                                        <td class="col-md-1">{{ agent.id }}</td>
-                                        <td class="col-md-3">{{ agent.nom }}</td>
-                                        <td class="col-md-4">{{ agent.prenom }}</td>
-                                        <td class="col-md-2">{{ agent.posteRegion }}</td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-6" id="content">
-                        <h2 class="sub-header">Agent Reporting</h2>
-
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead>
-                                <tr>
-                                    <th class="col-md-1"><b>#</b></th>
-                                    <th class="col-md-2">Nom</th>
-                                    <th class="col-md-3">Prenom</th>
-                                    <th class="col-md-">Tel</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for agent in agentsReport %}
-                                    <tr>
-                                        <td class="col-md-1">{{ agent.id }}</td>
-                                        <td class="col-md-2">{{ agent.nom }}</td>
-                                        <td class="col-md-3">{{ agent.prenom }}</td>
-                                        <td class="col-md-4">{{ agent.tel }}</td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
+                <div class="panle panel-default">
+                    <div class="panel-body">
+                        <div class="chart-body">
+                            <div id="linechart" class="stat-chart"></div>
+                            <div id="piechart" class="stat-chart"></div>
                         </div>
                     </div>
                 </div>
@@ -296,11 +194,22 @@
     </div>
 </div>
 
-
 {% block javascripts %}
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('bootstrap/script/default.js') }}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="//code.highcharts.com/4.1.8/highcharts.js"></script>
+    <script src="//code.highcharts.com/4.1.8/modules/exporting.js"></script>
+
+    <script type="text/javascript">
+        {{ chart(chart) }}
+    </script>
+
+    <script type="text/javascript">
+        {{ chart(line) }}
+    </script>
+
 {% endblock %}
 </body>
 </html>

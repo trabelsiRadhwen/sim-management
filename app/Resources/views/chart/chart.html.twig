@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <title>{% block title %}Edit Carte Sim {% endblock %}</title>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Dashboard{% endblock %}</title>
     {% block stylesheets %}
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+              integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+              crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap/style/default.css') }}">
     {% endblock %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
 <body>
 <div class="container-fluid display-table">
@@ -18,8 +21,8 @@
                 <img id="img-header" src="{{ asset('bootstrap/img/logo_tt_header.png') }}" class="hidden-xs hidden-sm">
             </a>
             <ul>
-                <li class="link">
-                    <a href="/">
+                <li class="link active">
+                    <a href="{{ path('dashboard') }}">
                         <span class="glyphicon glyphicon-dashboard"></span>
                         <span>Dashboard</span>
                     </a>
@@ -31,8 +34,8 @@
                         <span>Carte Sim</span>
                     </a>
                     <ul class="collapse collapseable" id="collapse-post">
-                        <li><a href="{{ path('new_sim') }}">Ajouter</a> </li>
-                        <li><a href="{{ path('sim_list') }}">Lister</a> </li>
+                        <li><a href="{{ path('new_sim') }}">Ajouter</a></li>
+                        <li><a href="{{ path('sim_list') }}">Liste</a></li>
                     </ul>
                 </li>
 
@@ -42,8 +45,8 @@
                         <span>Marque</span>
                     </a>
                     <ul class="collapse collapseable" id="collapse-post-marque">
-                        <li><a href="{{ path('new_marque') }}">Ajouter</a> </li>
-                        <li><a href="{{ path('marque_list') }}">Lister</a> </li>
+                        <li><a href="{{ path('new_marque') }}">Ajouter</a></li>
+                        <li><a href="{{ path('marque_list') }}">Liste</a></li>
                     </ul>
                 </li>
 
@@ -53,19 +56,19 @@
                         <span>Offre</span>
                     </a>
                     <ul class="collapse collapseable" id="collapse-post-offre">
-                        <li><a href="{{ path('new_offre') }}">Ajouter</a> </li>
-                        <li><a href="{{ path('offre_list') }}">Lister</a> </li>
+                        <li><a href="{{ path('new_offre') }}">Ajouter</a></li>
+                        <li><a href="{{ path('offre_list') }}">Liste</a></li>
                     </ul>
                 </li>
 
-                <li class="link active">
+                <li class="link">
                     <a href="#collapse-post-num" data-toggle="collapse" aria-controls="collapse-post">
                         <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-                        <span>Numerp Appel</span>
+                        <span>Numero Appel</span>
                     </a>
                     <ul class="collapse collapseable" id="collapse-post-num">
-                        <li><a href="{{ path('new_numero_appel') }}">Ajouter</a> </li>
-                        <li><a href="{{ path('num_list') }}">Lister</a> </li>
+                        <li><a href="{{ path('new_numero_appel') }}">Ajouter</a></li>
+                        <li><a href="{{ path('num_list') }}">Lister</a></li>
                     </ul>
                 </li>
 
@@ -87,11 +90,11 @@
                     </a>
                     <ul class="collapse collapseable" id="collapse-post-agent-com">
                         <li><a href="{{ path('new_agent_com') }}">Ajouter</a></li>
-                        <li><a href="{{ path('agent_com_list') }}">Lister</a> </li>
+                        <li><a href="{{ path('agent_com_list') }}">Liste</a></li>
                     </ul>
                 </li>
 
-                <li class="link">
+                <li class="link active">
                     <a href="#collapse-post-agent-report" data-toggle="collapse" aria-controls="collapse-post">
                         <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
                         <span class="hidden-sm hidden-sm">Suivre vente</span>
@@ -102,12 +105,14 @@
                 </li>
             </ul>
         </div>
+
         <div class="col-md-10 col-sm-11 display-table-cell valign-top">
             <div class="row">
                 <header id="nav-header" class="clearfix">
                     <div class="col-md-5">
                         <nav class="navbar-default pull-left">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="side-menu">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas"
+                                    data-target="side-menu">
                                 <span class="sr-only">Toggle navigation</span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -115,11 +120,12 @@
                             </button>
                         </nav>
                     </div>
-                    <div class="col-md-7 pull-right" >
+
+                    <div class="col-md-7 pull-right">
                         <ul class="pull-right">
                             <li id="welcome" class="hidden-xs"></li>
                             {% if (is_granted('ROLE_ADMIN')) %}
-                                <li><a href="{{ path('logout')}}" class="glyphicon glyphicon-log-out">Logout</a> </li>
+                                <li><a href="{{ path('logout') }}" class="glyphicon glyphicon-log-out">Logout</a></li>
                             {% endif %}
                         </ul>
                     </div>
@@ -127,30 +133,16 @@
             </div>
 
             {% block body %}
-                <div id="content">
-                    <header>
-                        <h2 class="page_title">Editer numero d'appel</h2>
-                    </header>
-
-                    <div class="content-inner">
-                        <div class="form-wrapper">
-                            <div class="form-group">
-                                {{ form_start(editNumForm) }}
-                                {{ form_row(editNumForm.numeroAppel) }}
-                            </div>
-
-                            <div class="form-group">
-                                {{ form_row(editNumForm.marque) }}
-                            </div>
-
-                            <div class="clearfix">
-                                <a href="{{ path('num_list') }}" class="btn btn-warning pull-right">Annuler</a>
-                                <button type="submit" class="btn btn-success pull-right" formnovalidate>Editer</button>
-                            </div>
+                <div class="panle panel-default">
+                    <div class="panel-body">
+                        <div class="chart-body">
+                            <div id="linechart" class="stat-chart"></div>
+                            <div id="piechart" class="stat-chart"></div>
                         </div>
-                        {{ form_end(editNumForm) }}
                     </div>
+                    <div id="barchart"></div>
                 </div>
+
             {% endblock %}
 
             <div class="row">
@@ -166,9 +158,26 @@
 </div>
 
 {% block javascripts %}
-    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('bootstrap/script/default.js') }}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="//code.highcharts.com/4.1.8/highcharts.js"></script>
+    <script src="//code.highcharts.com/4.1.8/modules/exporting.js"></script>
+
+    <script type="text/javascript">
+        {{ chart(chart) }}
+    </script>
+
+    <script type="text/javascript">
+        {{ chart(line) }}
+    </script>
+
+    <script type="text/javascript">
+        {{ chart(bar) }}
+    </script>
+
 {% endblock %}
 </body>
 </html>

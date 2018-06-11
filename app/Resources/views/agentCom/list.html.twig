@@ -58,14 +58,14 @@
                     </ul>
                 </li>
 
-                <li class="link active">
-                    <a href="#collapse-post-agent-com" data-toggle="collapse" aria-controls="collapse-post">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                        <span>Agents commerciaux</span>
+                <li class="link">
+                    <a href="#collapse-post-num" data-toggle="collapse" aria-controls="collapse-post">
+                        <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                        <span>Numero Appel</span>
                     </a>
-                    <ul class="collapse collapseable" id="collapse-post-agent-com">
-                        <li><a href="{{ path('new_agent_com') }}">Ajouter</a></li>
-                        <li><a href="{{ path('agent_com_list') }}">Lister</a> </li>
+                    <ul class="collapse collapseable" id="collapse-post-num">
+                        <li><a href="{{ path('new_numero_appel') }}">Ajouter</a></li>
+                        <li><a href="{{ path('num_list') }}">Lister</a></li>
                     </ul>
                 </li>
 
@@ -80,13 +80,24 @@
                     </ul>
                 </li>
 
+                <li class="link active">
+                    <a href="#collapse-post-agent-com" data-toggle="collapse" aria-controls="collapse-post">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        <span>Agents commerciaux</span>
+                    </a>
+                    <ul class="collapse collapseable" id="collapse-post-agent-com">
+                        <li><a href="{{ path('new_agent_com') }}">Ajouter</a></li>
+                        <li><a href="{{ path('agent_com_list') }}">Lister</a></li>
+                    </ul>
+                </li>
+
                 <li class="link">
                     <a href="#collapse-post-agent-report" data-toggle="collapse" aria-controls="collapse-post">
                         <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
-                        <span class="hidden-sm hidden-sm">Consulter vente</span>
+                        <span class="hidden-sm hidden-sm">Suivre vente</span>
                     </a>
                     <ul class="collapse collapseable" id="collapse-post-agent-report">
-                        <li><a href="#">Consulter</a></li>
+                        <li><a href="{{ path('chart') }}">Consulter</a></li>
                     </ul>
                 </li>
             </ul>
@@ -106,7 +117,7 @@
                     </div>
                     <div class="col-md-7 pull-right">
                         <ul class="pull-right">
-                            <li id="welcome" class="hidden-xs">Welcome to admin area</li>
+                            <li id="welcome" class="hidden-xs"></li>
 
                             {% if (is_granted('ROLE_ADMIN')) %}
                                 <li>

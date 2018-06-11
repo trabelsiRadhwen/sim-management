@@ -94,10 +94,11 @@
                 <li class="link active">
                     <a href="#collapse-post-agent-report" data-toggle="collapse" aria-controls="collapse-post">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                        <span class="hidden-sm hidden-sm">Agents Reporting</span>
+                        <span class="hidden-sm hidden-sm">Agent reoprting</span>
                     </a>
                     <ul class="collapse collapseable" id="collapse-post-agent-report">
-                        <li><a href="#">Consulter</a></li>
+                        <li><a href="{{ path('new_agent_report') }}">Ajouter</a></li>
+                        <li><a href="{{ path('agent_report_list') }}">Liste</a></li>
                     </ul>
                 </li>
             </ul>
