@@ -2,17 +2,12 @@
 
 namespace SimBundle\Controller;
 
-use function count;
 use Doctrine\ORM\EntityManagerInterface;
-use function dump;
+use function count;
 use function fclose;
 use function feof;
 use function fgetcsv;
-use function fgets;
 use function fopen;
-use mysqli;
-use function mysqli_fetch_assoc;
-use const null;
 use function print_r;
 use SimBundle\Entity\AgentCommercial;
 use SimBundle\Entity\Marque;
@@ -20,6 +15,7 @@ use SimBundle\Entity\NumeroAppel;
 use SimBundle\Entity\Sim;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
 
 class ImportFileController extends Controller
 {
@@ -31,79 +27,130 @@ class ImportFileController extends Controller
     {
 
         $results = array();
-        $row = 0;
+
         if (isset($_POST["Import"])) {
 
             $filename = $_FILES["file"]["tmp_name"];
-            $lines = file($filename);
-            $number = count($lines);
-            $file = fopen($filename, "r");
-            while (!feof($file)) {
-                while (($ar = fgetcsv($file, 1000, ';')) !== FALSE) {
-                    $num = count($ar);
-                    //echo $num;
-                    $row++;
-                    for ($c = 0; $c < $num; $c++) {
-                        $results[$num] = array(
-                            'numeroSerie' => $ar[0],
-                            'etat' => $ar[1],
-                            'marque' => $ar[2],
-                            'username' => $ar[3],
-                            'password' => $ar[4],
-                            'nom' => $ar[5],
-                            'prenom' => $ar[6],
-                            'email' => $ar[7],
-                            'tel' => $ar[8],
-                            'posteRegion' => $ar[9],
-                            'numeroAppel' => $ar[10],
-                        );
+            //$lines = file($filename);
+            //$number = count($lines);
+
+            if (($handle = fopen($filename, "r")) !== FALSE) {
+
+                while (!feof($handle)) {
+
+                    while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+                        $num = count($data);
+
+                        $row = 1;
+                        for ($c = 0; $c < $num; $c++) {
+
+                            $results[$num] = array(
+                                'numeroSerie' => $data[0],
+                                'etat' => $data[1],
+                                'marque' => $data[2],
+                                'username' => $data[3],
+                                'password' => $data[4],
+                                'nom' => $data[5],
+                                'prenom' => $data[6],
+                                'email' => $data[7],
+                                'tel' => $data[8],
+                                'posteRegion' => $data[9],
+                                'numeroAppel' => $data[10],
+                            );
+                            $row++;
+                        }
+                        print_r($results);
                     }
-                    print_r($results);
-                    // print the array
-                    echo "<br>";
                 }
+                fclose($handle);
             }
-            fclose($file);
         }
 
-        /*$em = $this->getDoctrine()->getManager();
+        foreach ($results as $row) {
 
-        foreach ($results as $result){
+            $em = $this->getDoctrine()->getManager();
 
-            $marque = new Marque();
-            $marque->setMarque($result['marque']);
+            $numeroAppel = $em->getRepository(NumeroAppel::class)
+                ->findOneBy([
+                    'numeroAppel' => $row['numeroAppel']
+                ]);
 
-            $em->persist($marque);
+            if (null === $numeroAppel) {
 
-            $numero = new NumeroAppel();
-            $numero->setNumeroAppel($result['numeroAppel']);
-            $numero->setMarque($marque);
-            $em->persist($numero);
+                $numeroAppel = new NumeroAppel();
+                $numeroAppel->setNumeroAppel($row['numeroAppel']);
+                $em->persist($numeroAppel);
+                $em->flush();
+            }
 
-            $agent = new AgentCommercial();
-            $agent->setUsername($result['username']);
-            $agent->setPassword($result['password']);
-            $agent->setNom($result['nom']);
-            $agent->setPrenom($result['prenom']);
-            $agent->setEmail($result['email']);
-            $agent->setTel($result['tel']);
-            $agent->setPosteRegion($result['posteRegion']);
+            $marque = $em->getRepository(Marque::class)
+                ->findOneBy([
+                    'marque' => $row['marque']
+                ]);
 
-            $em->persist($agent);
+            if (null === $marque) {
 
-            $sim = new Sim();
-            $sim->setNumeroSerie($result['numeroSerie']);
+                $marque = new Marque();
+                $marque->setMarque($row['marque']);
+                $marque->setNumeroAppel($numeroAppel);
 
-            $sim->setEtat($result['etat']);
-            $sim->setMarque($marque);
-            $sim->setAgent($agent);
+                $em->persist($marque);
+                $em->flush();
+            }
 
-            $em->persist($sim);
+            $agent = $em->getRepository(AgentCommercial::class)
+                ->findOneBy([
+                    'username' => $row['username'],
+                    'password' => $row['password'],
+                    'nom' => $row['nom'],
+                    'prenom' => $row['prenom'],
+                    'email' => $row['email'],
+                    'tel' => $row['tel'],
+                    'posteRegion' => $row['posteRegion']
+                ]);
 
-            $em->flush();
+            if (null === $agent) {
+
+                $agent = new AgentCommercial();
+                $agent->setUsername($row['username']);
+                $agent->setPassword($row['password']);
+                $agent->setNom($row['nom']);
+                $agent->setPrenom($row['prenom']);
+                $agent->setEmail($row['email']);
+                $agent->setTel($row['tel']);
+                $agent->setPosteRegion($row['posteRegion']);
+
+                $em->persist($agent);
+                $em->flush();
+            }
+
+            $sim = $em->getRepository(Sim::class)
+                ->findOneBy([
+                    'numeroSerie' => $row['numeroSerie'],
+                    'etat' => $row['etat'],
+                    'numeroAppel' => $row['numeroAppel'],
+                    'marque' => $row['marque'],
+                    'agent' => $row['agent'],
+                ]);
+
+            if (null === $sim) {
+
+                $sim = new Sim();
+                $sim->setNumeroSerie($row['numeroSerie']);
+                $sim->setNumeroAppel($numeroAppel);
+                $sim->setEtat($row['etat']);
+                $sim->setMarque($marque);
+                $sim->setAgent($agent);
+                $numeroAppel->setMarque($marque);
+
+                $em->persist($sim);
+
+                $em->flush();
+            }
 
             return $this->redirectToRoute('sim_list');
-        }*/
+        }
+
         return $this->render('import/csv.html.twig');
     }
 }

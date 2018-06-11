@@ -123,7 +123,7 @@ class SimController extends Controller
      */
     public function listeAction(){
         $em = $this->getDoctrine()->getManager();
-        $sims = $em->getRepository('SimBundle\Entity\Sim')->findSimsInactif();
+        $sims = $em->getRepository('SimBundle\Entity\Sim')->findAll();
 
         return $this->render('sim/list.html.twig', [
             'sims' => $sims,
@@ -142,12 +142,5 @@ class SimController extends Controller
         $this->addFlash('Success','Sim Removed!');
 
         return $this->redirectToRoute('sim_list');
-    }
-
-    /**
-     * @Route("/")
-     */
-    public function showAction(){
-        return $this->render('sim/show.html.twig');
     }
 }

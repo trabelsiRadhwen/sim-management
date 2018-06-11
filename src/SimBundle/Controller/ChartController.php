@@ -2,55 +2,21 @@
 
 namespace SimBundle\Controller;
 
+use function count;
 use function intval;
-use SimBundle\Entity\Sim;
+use Ob\HighchartsBundle\Highcharts\Highchart;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Ob\HighchartsBundle\Highcharts\Highchart;
-use function var_dump;
 
 class ChartController extends Controller
 {
 
     /**
-     * @Route("/charts", name="charts")
+     * @Route("/charts",name="chart")
      */
     public function suivreAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-
-        // line chart
-
-        $sellsHistory = array(
-            array(
-                "name" => "Total des ventes",
-                "data" => array(683, 756, 543, 1208, 617, 990, 1001)
-            ),
-            array(
-                "name" => "Ventes en France",
-                "data" => array(467, 321, 56, 698, 134, 344, 452)
-            ),
-
-        );
-
-        $dates = array(
-            "21/06", "22/06", "23/06", "24/06", "25/06", "26/06", "27/06"
-        );
-
-        $br = new Highchart();
-        // ID de l'élement de DOM que vous utilisez comme conteneur
-        $br->chart->renderTo('linechart');
-        $br->title->text('Vente du 21/06/2013 au 27/06/2013');
-
-        $br->yAxis->title(array('text' => "Ventes (milliers d'unité)"));
-
-        $br->xAxis->title(array('text' => "Date du jours"));
-        $br->xAxis->categories($dates);
-
-        $br->series($sellsHistory);
-
-        //pie chart sim vendu par marque
 
         $ob = new Highchart();
         $ob->chart->renderTo('piechart');
@@ -62,9 +28,9 @@ class ChartController extends Controller
             'showInLegend' => true
         ));
 
-        $query = $em->getRepository('SimBundle:Sim')->findMarqueSim();
+        $query = $em->getRepository('SimBundle:Sim')->findSalesMarque();
         $result = $query;
-        var_dump($result);
+        //var_dump($result);
         $data = array();
         foreach ($result as $values) {
             $a = array($values['smar'], intval($values['mar']));
@@ -72,9 +38,90 @@ class ChartController extends Controller
         }
         $ob->series(array(array('type' => 'pie', 'name' => 'Browser share', 'data' => $data)));
 
-        return $this->render('index.html.twig', array(
+
+        // line chart
+
+        $sql = $em->getRepository('SimBundle:Sim')->findSalesPoste();
+        $results = $sql;
+        //var_dump($results);
+        $postes = array();
+        foreach ($results as $res) {
+            $a = array($res['poste']);
+            array_push($postes, $a);
+        }
+
+        $numbers = array();
+        foreach ($results as $nb) {
+            $p = array(intval($nb['nb']));
+            array_push($numbers, $p);
+        }
+
+        $sellsHistory = array(
+            array(
+                "name" => "Total des ventes",
+                "data" => $numbers
+            )
+        );
+
+        $br = new Highchart();
+        // ID de l'élement de DOM que vous utilisez comme conteneur
+        $br->chart->renderTo('linechart');
+        $br->title->text('Vente des cartes par region');
+
+        $br->yAxis->title(array('text' => "Nombre des ventes"));
+
+        $br->xAxis->title(array('text' => "Region"));
+        $br->xAxis->categories($postes);
+
+        $br->series($sellsHistory);
+
+
+        //Bar chart
+        $new = $em->getRepository('SimBundle:Sim')->findSalesAgentCom();
+        $resNew = $new;
+        //var_dump($resNew);
+        $nom = array();
+        foreach ($resNew as $vs) {
+            $nm = array($vs['nom']);
+            array_push($nom, $nm);
+        }
+
+        $nombre = array();
+        foreach ($resNew as $nbrs) {
+            $mbre = array(intval($nbrs['nbr']));
+            array_push($nombre, $mbre);
+        }
+
+        $sales = array(
+            array(
+                "name" => "Totale des ventes",
+                "data" => $nombre
+            ),
+
+        );
+
+        $dates = array(
+            $nom
+        );
+
+
+        $rt = new Highchart();
+        // ID de l'élement de DOM que vous utilisez comme conteneur
+        $rt->chart->renderTo('barchart');
+        $rt->title->text('Vente des cartes SIM par agent commercial');
+        $rt->chart->type('column');
+
+        $rt->yAxis->title(array('text' => "Nombre totale"));
+
+        $rt->xAxis->title(array('text' => "agent"));
+        $rt->xAxis->categories($dates);
+
+        $rt->series($sales);
+
+        return $this->render('chart/chart.html.twig', [
             'chart' => $ob,
-            'line' => $br
-        ));
+            'line' => $br,
+            'bar' => $rt
+        ]);
     }
 }
