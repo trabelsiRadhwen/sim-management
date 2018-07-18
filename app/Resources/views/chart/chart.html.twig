@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>{% block title %}Dashboard{% endblock %}</title>
+    <title>{% block title %}Chart{% endblock %}</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
               integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
@@ -21,7 +21,7 @@
                 <img id="img-header" src="{{ asset('bootstrap/img/logo_tt_header.png') }}" class="hidden-xs hidden-sm">
             </a>
             <ul>
-                <li class="link active">
+                <li class="link">
                     <a href="{{ path('dashboard') }}">
                         <span class="glyphicon glyphicon-dashboard"></span>
                         <span>Dashboard</span>
